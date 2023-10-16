@@ -1,0 +1,48 @@
+
+<ion-header>
+  <ion-toolbar>
+
+
+
+    <ion-buttons slot="end">
+      <ion-button (click)="close()" fill="clear">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="formCategory">
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12">
+        <ion-label>Nombre de la categoria</ion-label>
+        <ion-input
+        fill="outline"
+        placeholder="Nombre de la categoria"
+        formControlName="name"></ion-input>
+        <small *ngIf="validateCtrl('name')"> **Obligatorio</small>
+      </ion-col>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label>Color</ion-label>
+          <ion-select
+          formControlName="color"
+          placeholder="Select Color">
+            <ion-select-option value="primary">primary</ion-select-option>
+            <ion-select-option value="danger">danger</ion-select-option>
+            <ion-select-option value="success">success</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-button (click)="saveCategory()" expand="block" fill="clear" shape="round">
+    Guardar
+  </ion-button>
+</form>
+</ion-content>

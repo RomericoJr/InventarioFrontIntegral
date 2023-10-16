@@ -7,14 +7,20 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { Tab1PageRoutingModule } from './tab1-routing.module';
 
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { NgApexchartsModule } from 'ng-apexcharts';
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    Tab1PageRoutingModule
+    Tab1PageRoutingModule,
+    NgxChartsModule,
+    NgApexchartsModule
   ],
-  declarations: [Tab1Page]
+  declarations: [Tab1Page],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class Tab1PageModule {}

@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()" fill="clear">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col offset="2" size="8">
+        <img src="https://m.media-amazon.com/images/I/7166--AaJIL.jpg">
+      </ion-col>
+    </ion-row>
+    <ion-list>
+      <ion-item>
+        <ion-label>Nombre: Mando Pro</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Descripción: EL mas pro de pros</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Precio : {{17 | currency}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Stock: 200 </ion-label>
+      </ion-item>
+
+    </ion-list>
+  </ion-grid>
+
+</ion-content>

@@ -1,0 +1,115 @@
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="end">
+        <ion-button (click)="close()" fill="clear">
+          <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+
+<ion-content class="ion-padding">
+
+  <form [formGroup]="formProduct" >
+
+    <!-- <ion-input
+    id=""
+    label="Nombre"
+    labelPlacement="floating"
+    [counter]="true"
+    maxlength="20"
+    [counterFormatter]="customCounterFormatter"
+    ></ion-input> -->
+
+    <ion-input formControlName="name" label="Nombre" label-placement="floating" fill="solid" placeholder="Introduzca el nombre"></ion-input>
+
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="4" offset="4">
+          <ion-img
+          formControlName="image"
+          id="imgProf" #itemPicture [src]="imagePr" (click)="imageProduct($event)"></ion-img>
+
+        </ion-col>
+
+        <ion-col size="6"></ion-col>
+      </ion-row>
+    </ion-grid>
+
+<!--
+      <ion-input
+      id=""
+      formControlName="image"
+      label="Imagen del producto"
+      labelPlacement="floating"
+      [counter]="true"
+      maxlength="20"
+      [counterFormatter]="customCounterFormatter"
+      ></ion-input> -->
+
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <!-- errorText="Invalid code" -->
+            <ion-input
+            formControlName="code"
+            type="text"
+            fill="solid"
+            label="Codigo"
+            labelPlacement="floating"
+            helperText="Enter a code"
+            ngModel
+            email
+          ></ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-select
+              formControlName="category_id"
+              label="Categoria" label-placement="floating">
+                <ion-select-option
+                *ngFor="let cat of categoryArray"
+                [value]=cat.id >{{cat.name}}</ion-select-option>
+
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-item>
+        <ion-select
+        formControlName="price"
+        label="Precio" label-placement="floating">
+          <ion-select-option value="1">12</ion-select-option>
+          <ion-select-option value="2">23</ion-select-option>
+          <ion-select-option value="3">43</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+
+
+      <ion-select
+      formControlName="price_sale"
+      label="Precio" label-placement="floating">
+        <ion-select-option value="1">12</ion-select-option>
+        <ion-select-option value="2">23</ion-select-option>
+        <ion-select-option value="3">43</ion-select-option>
+      </ion-select>
+
+      <!-- <ion-input
+      formControlName="adquisition" label="Adquisición" label-placement="floating" fill="solid" placeholder="Adquisición"></ion-input> -->
+
+      <ion-input
+      formControlName="expired"  label="expired" label-placement="floating" fill="solid" placeholder="vencimiento"></ion-input>
+
+      <ion-input
+      formControlName="stock"  label="Stoock" label-placement="floating" fill="solid" placeholder="stock"></ion-input>
+
+      <ion-button expand="block" shape="round" (click)="save()"> Guardar</ion-button>
+
+  </form>
+
+</ion-content>
