@@ -5,6 +5,7 @@ import { ModalController } from '@ionic/angular';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { ProductService } from '../../service/product.service';
 import { CategoryServiceService } from 'src/app/service/category-service.service';
+import { priceValid } from 'src/app/validators/price.validator';
 
 @Component({
   selector: 'app-new-product',
@@ -45,15 +46,16 @@ export class NewProductComponent  implements OnInit {
       name: ['', [Validators.required,
         Validators.maxLength(50),
         Validators.minLength(10)]],
-    price: ['', Validators.required],
-    price_sale: ['', Validators.required],
+    price: [0, Validators.required],
+    price_sale: [0, Validators.required],
     stock: ['', Validators.required],
     expired: ['', Validators.required],
     image: ['', Validators.required],
     code: ['', Validators.required],
     // state: ['', Validators.required],
     category_id: ['', Validators.required],
-    })
+    },
+    {validators: priceValid})
     this.getCategories();
   }
 
@@ -78,9 +80,12 @@ export class NewProductComponent  implements OnInit {
 
       this.prodService.newProduct(formData).subscribe( res =>{
         console.log(res);
-        this.route.navigate(['/tabs/tab1']);
+        // this.route.navigate(['/tabs/tab1']);
+        //*Envio de emiiter
+        this.prodService.setNewProduct(res);
       } );
       console.log(data);
+      this.close();
     }
 
   }
@@ -141,6 +146,10 @@ generarURL(image: any){
       console.log(res);
       this.categoryArray = res;
     } );
+  }
+
+  validarPrecio(){
+    return !!this.formProduct?.errors?.['priceError']
   }
 
 }

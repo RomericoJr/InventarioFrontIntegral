@@ -79,7 +79,10 @@
         </ion-row>
       </ion-grid>
 
-      <ion-item>
+      <ion-input
+      formControlName="price" type="number" label="price" label-placement="floating" fill="solid" placeholder="price"></ion-input>
+
+      <!-- <ion-item>
         <ion-select
         formControlName="price"
         label="Precio" label-placement="floating">
@@ -87,29 +90,33 @@
           <ion-select-option value="2">23</ion-select-option>
           <ion-select-option value="3">43</ion-select-option>
         </ion-select>
-      </ion-item>
+      </ion-item> -->
 
 
 
-      <ion-select
+      <!-- <ion-select
       formControlName="price_sale"
       label="Precio" label-placement="floating">
         <ion-select-option value="1">12</ion-select-option>
         <ion-select-option value="2">23</ion-select-option>
         <ion-select-option value="3">43</ion-select-option>
-      </ion-select>
+      </ion-select> -->
+      <ion-input
+      formControlName="price_sale" type="number"  label="price_sale" label-placement="floating" fill="solid" placeholder="price_sale"></ion-input>
+      <small *ngIf="validarPrecio()">El precio de venta debe ser mayor</small>
 
       <!-- <ion-input
       formControlName="adquisition" label="Adquisición" label-placement="floating" fill="solid" placeholder="Adquisición"></ion-input> -->
 
       <ion-input
-      formControlName="expired"  label="expired" label-placement="floating" fill="solid" placeholder="vencimiento"></ion-input>
+      formControlName="expired" type="date" label="expired" label-placement="floating" fill="solid" placeholder="vencimiento"></ion-input>
 
       <ion-input
-      formControlName="stock"  label="Stoock" label-placement="floating" fill="solid" placeholder="stock"></ion-input>
+      formControlName="stock" type="number"  label="Stoock" label-placement="floating" fill="solid" placeholder="stock"></ion-input>
 
-      <ion-button expand="block" shape="round" (click)="save()"> Guardar</ion-button>
 
+      <ion-button  expand="block" shape="round" (click)="save()"> Guardar</ion-button>
+      <!-- [disabled]="formProduct.invalid"  -->
   </form>
 
 </ion-content>

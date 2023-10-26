@@ -75,14 +75,14 @@
   </ion-grid>
 
   <ion-card>
-    <ion-item  lines="full" *ngFor="let productoss of [1,1,1,1,1,1,1]">
+    <ion-item  lines="full" *ngFor="let prod of productos">
     <ion-thumbnail (click)="openViewProduct()" slot="start">
-      <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+      <img alt="Silhouette of mountains" [src]=prod.image />
     </ion-thumbnail>
     <ion-label>
-      Cheetos
-      <p><b>Stock:</b> 200</p>
-      <p><b>Precio:</b> {{15 | currency}}</p>
+      {{prod.name}}}
+      <p><b>Stock:</b>{{prod.price}}</p>
+      <p><b>Precio:</b> {{prod.price | currency}}</p>
     </ion-label>
       <ion-button fill="clear">
         <ion-icon color="primary"  slot="icon-only" name="create"></ion-icon>

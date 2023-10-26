@@ -5,6 +5,7 @@ import { ViewProductComponent } from '../components/view-product/view-product.co
 import { NewSaleComponent } from '../components/new-sale/new-sale.component';
 import { NewCategoryComponent } from '../components/new-category/new-category.component';
 import { CategoryServiceService } from '../service/category-service.service';
+import { ProductService } from '../service/product.service';
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -15,19 +16,28 @@ export class Tab2Page {
   titulo = "mis_productos"
   constructor(
     private modalCtrl: ModalController,
-    private categoryService : CategoryServiceService
+    private categoryService : CategoryServiceService,
+    private productService: ProductService
   ) {}
 
   ngOnInit(){
     this.getCategory();
+    this.getProduct();
+
     this.categoryService.getNewCategory.subscribe(category =>{
       if(category){
         this.categorias.push(category);
       }
     });
+    this.productService.getNewProduct.subscribe(product =>{
+      if(product){
+        this.productos.push(product);
+      }
+    });
 
   }
   categorias:any = [];
+  productos:any = [];
 
   getCategory(){
     this.categoryService.getCategory().subscribe(
@@ -36,6 +46,20 @@ export class Tab2Page {
 
         this.categorias = res;
         this.categorias = this.categorias.slice(0, 5);
+      },
+      err=>{
+        console.log(err);
+      }
+    )
+  }
+
+  getProduct(){
+    this.productService.getProduct().subscribe(
+      res=>{
+        // console.log(res);
+        this.productos = res;
+        console.log('mis productos',this.productos);
+        // this.productos = this.productos.slice(0, 5);
       },
       err=>{
         console.log(err);
