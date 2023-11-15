@@ -31,7 +31,8 @@ export class Tab2Page {
     });
     this.productService.getNewProduct.subscribe(product =>{
       if(product){
-        this.productos.push(product);
+        this.getProduct();
+        // this.productos.push(product);
       }
     });
 
@@ -58,6 +59,7 @@ export class Tab2Page {
       res=>{
         // console.log(res);
         this.productos = res;
+        this.productos.reverse();
         console.log('mis productos',this.productos);
         // this.productos = this.productos.slice(0, 5);
       },
@@ -82,10 +84,41 @@ export class Tab2Page {
     )
   }
 
+  deleteProduct(id:any){
+    console.log('id',id);
+
+    this.productService.deleteProduct(id).subscribe(
+      data=>{
+        if(data){
+          this.getProduct();
+        }
+        console.log('info', data);
+      }
+    )
+  }
+
   prueba(){
     console.log('works prueba');
 
   }
+
+  async openEditProduct(product:any){
+
+    // console.log('works');
+    // console.log(product);
+
+    const modal = await this.modalCtrl.create({
+      component: NewProductComponent,
+      mode: 'ios',
+      backdropDismiss: false,
+      componentProps:{
+        dataKey: product
+      }
+    });
+
+    await modal.present();
+  }
+
 
   async openNewProduct(){
     console.log('works bootmS');

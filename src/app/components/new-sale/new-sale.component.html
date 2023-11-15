@@ -22,7 +22,11 @@
   mode="ios"
   placeholder="Buscar producto"
   [debounce]="250"
+  (ionChange)="showProduct($event)"
   ></ion-searchbar>
+
+  <ion-chip *ngFor="let sp of productsSearch">{{sp.data.item.name}}</ion-chip>
+
       </ion-col>
       <ion-col size="12">
         <ion-label >Cantidad</ion-label>

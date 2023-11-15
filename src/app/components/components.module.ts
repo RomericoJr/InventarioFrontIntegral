@@ -8,6 +8,7 @@ import { ViewProductComponent } from './view-product/view-product.component';
 import { HeaderComponent } from './header/header.component';
 import { NewSaleComponent } from './new-sale/new-sale.component';
 import { NewCategoryComponent } from './new-category/new-category.component';
+import { FillerProductsComponent } from './filler-products/filler-products.component';
 
 
 
@@ -17,7 +18,8 @@ import { NewCategoryComponent } from './new-category/new-category.component';
     ViewProductComponent,
     HeaderComponent,
     NewSaleComponent,
-    NewCategoryComponent
+    NewCategoryComponent,
+    FillerProductsComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +32,8 @@ import { NewCategoryComponent } from './new-category/new-category.component';
     ViewProductComponent,
     HeaderComponent,
     NewSaleComponent,
-    NewCategoryComponent
+    NewCategoryComponent,
+    FillerProductsComponent
   ]
 })
 export class ComponentsModule { }

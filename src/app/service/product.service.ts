@@ -27,4 +27,12 @@ export class ProductService {
   getProduct(){
     return this.http.get(`${this.api}getProduct`);
   }
+
+  deleteProduct(id:any){
+    return this.http.delete(`${this.api}deleteProduct/${id}`);
+  }
+
+  updateProduct(id:number,data:any){
+    return this.http.post(`${this.api}updateProduct/${id}`,data);
+  }
 }

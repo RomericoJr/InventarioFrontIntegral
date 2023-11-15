@@ -9,20 +9,20 @@
 <ion-content [fullscreen]="true">
 
   <ion-searchbar
-  mode="ios"
-  placeholder="Buscar producto"
-  (ionChange)="onSearchChange
-  ($event)" [debounce]="250"
+    mode="ios"
+    placeholder="Buscar producto"
+    (ionChange)="onSearchChange($event)"
+    [debounce]="250"
   ></ion-searchbar>
 
-  <ion-grid >
+  <ion-grid>
     <ion-row>
-      <ion-col size="6" class="ion-text-center">
-          <ion-text >
-            <h1>Categorias</h1>
-          </ion-text>
+      <ion-col size="12" size-md="6" class="ion-text-center">
+        <ion-text>
+          <h1>Categorias</h1>
+        </ion-text>
       </ion-col>
-      <ion-col size="6"  class="ion-margin-top">
+      <ion-col size="12" size-md="6" class="ion-margin-top">
         <ion-button (click)="openNewCategory()" expand="block" fill="clear">
           <ion-icon slot="start" name="add"></ion-icon>
           Categoria
@@ -31,66 +31,73 @@
     </ion-row>
   </ion-grid>
 
-  <!-- <ion-card-header class="ion-no-padding">
-    <ion-item lines="none">
-     <ion-button slot="end" fill="clear" class="ion-no-padding">
-       <ion-icon name="chevron-down-outline"></ion-icon>
-     </ion-button>
-    </ion-item>
-   </ion-card-header> -->
-
   <ion-card>
-      <ion-row>
-        <ion-col class="ion-text-center ion-padding" *ngIf="!categorias.length" size="12">
-          <ion-text color="primary">
-            <h3>Aun no hay ninguna categoria</h3>
-          </ion-text>
-            </ion-col>
-        <ion-col size="4" *ngFor="let cat of categorias">
-          <ion-button [color]=cat.color class="ion-text-lowercase" expand="block" shape="round">
-            <p>
-
-              {{cat.length > 12 ? cat.substr(0,10) + '...' : cat.name }}
-            </p>
-          </ion-button>
-        </ion-col>
-      </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-center ion-padding" *ngIf="!categorias.length" size="12">
+        <ion-text color="primary">
+          <h3>Aun no hay ninguna categoria</h3>
+        </ion-text>
+      </ion-col>
+      <ion-col size="6" size-md="4" *ngFor="let cat of categorias">
+        <ion-button [color]=cat.color class="ion-text-lowercase" expand="block" shape="round">
+          <p>
+            {{cat.length > 12 ? cat.substr(0, 10) + '...' : cat.name }}
+          </p>
+        </ion-button>
+      </ion-col>
+    </ion-row>
   </ion-card>
 
-  <ion-grid >
+  <ion-grid>
     <ion-row>
-      <ion-col size="6">
-        <ion-button (click)="openNewProduct()" expand="block" fill="clear" >
+      <ion-col size="12" size-md="6">
+        <ion-button (click)="openNewProduct()" expand="block" fill="clear">
           <ion-icon slot="start" name="add"></ion-icon>
           Nuevo producto
-         </ion-button>
+        </ion-button>
       </ion-col>
-      <ion-col size="6">
-        <ion-button (click)="openNewSale()" expand="block" fill="clear" >
+      <ion-col size="12" size-md="6">
+        <ion-button (click)="openNewSale()" expand="block" fill="clear">
           <ion-icon slot="start" name="add"></ion-icon>
           Nueva venta
-         </ion-button>
+        </ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
 
-  <ion-card>
-    <ion-item  lines="full" *ngFor="let prod of productos">
-    <ion-thumbnail (click)="openViewProduct()" slot="start">
-      <img alt="Silhouette of mountains" [src]=prod.image />
-    </ion-thumbnail>
-    <ion-label>
-      {{prod.name}}}
-      <p><b>Stock:</b>{{prod.price}}</p>
-      <p><b>Precio:</b> {{prod.price | currency}}</p>
-    </ion-label>
-      <ion-button fill="clear">
-        <ion-icon color="primary"  slot="icon-only" name="create"></ion-icon>
-      </ion-button>
-      <ion-button fill="clear">
-        <ion-icon color="danger"  slot="icon-only" name="trash"></ion-icon>
-      </ion-button>
-    </ion-item>
-  </ion-card>
+
+
+        <ion-card>
+
+          <ion-grid>
+            <ion-row>
+              <ion-col size="12" size-md="4" size-sm="6" *ngFor="let prod of productos">
+
+          <ion-item lines="full" >
+            <ion-thumbnail (click)="openViewProduct()" slot="start">
+              <img alt="Silhouette of mountains" [src]=prod.image />
+            </ion-thumbnail>
+            <ion-label>
+              {{prod.name}}
+              <p><b>Stock:</b>{{prod.price}}</p>
+              <p><b>Precio:</b> {{prod.price | currency}}</p>
+            </ion-label>
+            <ion-button fill="clear" (click)="openEditProduct(prod)">
+              <ion-icon color="primary" slot="icon-only" name="create" ></ion-icon>
+            </ion-button>
+            <ion-button fill="clear" (click)="deleteProduct(prod.id)">
+              <ion-icon color="danger" slot="icon-only" name="trash"></ion-icon>
+            </ion-button>
+          </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+        </ion-card>
+
+
+
+
+
 
 </ion-content>
