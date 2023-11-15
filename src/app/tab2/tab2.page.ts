@@ -6,6 +6,8 @@ import { NewSaleComponent } from '../components/new-sale/new-sale.component';
 import { NewCategoryComponent } from '../components/new-category/new-category.component';
 import { CategoryServiceService } from '../service/category-service.service';
 import { ProductService } from '../service/product.service';
+
+
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -13,7 +15,10 @@ import { ProductService } from '../service/product.service';
 })
 export class Tab2Page {
 
-  titulo = "mis_productos"
+  titulo = "mis_productos";
+
+
+
   constructor(
     private modalCtrl: ModalController,
     private categoryService : CategoryServiceService,
@@ -166,5 +171,10 @@ export class Tab2Page {
   }
 
 
+  deleteCategory(id:any){
+    this.categoryService.deleteCategory(id).subscribe(data => {
+      console.log(data);
+    })
+  }
 
 }

@@ -35,4 +35,16 @@ export class ProductService {
   updateProduct(id:number,data:any){
     return this.http.post(`${this.api}updateProduct/${id}`,data);
   }
+
+  postSale(data:any){
+    return this.http.post(`${this.api}newSale`,data);
+  }
+
+  getSale(){
+    return this.http.get(`${this.api}getSale`);
+  }
+
+  deleteSale(id:any){
+    return this.http.delete(`${this.api}deleteSale/${id}`);
+  }
 }

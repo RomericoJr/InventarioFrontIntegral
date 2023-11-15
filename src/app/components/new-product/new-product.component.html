@@ -124,6 +124,7 @@
 
       <ion-input
       formControlName="stock" type="number"  label="Stoock" label-placement="floating" fill="solid" placeholder="stock"></ion-input>
+      <small class="colorSmall" color="danger" *ngIf="validarStock()">El Stockd debe ser mayor a 0</small>
 
 
       <ion-button  expand="block" shape="round" (click)="btnAcction()"> {{btn}}</ion-button>

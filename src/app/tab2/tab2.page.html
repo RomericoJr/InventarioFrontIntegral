@@ -39,7 +39,7 @@
         </ion-text>
       </ion-col>
       <ion-col size="6" size-md="4" *ngFor="let cat of categorias">
-        <ion-button [color]=cat.color class="ion-text-lowercase" expand="block" shape="round">
+        <ion-button (click)="deleteCategory(cat.id)" [color]=cat.color class="ion-text-lowercase" expand="block" shape="round">
           <p>
             {{cat.length > 12 ? cat.substr(0, 10) + '...' : cat.name }}
           </p>
@@ -79,7 +79,7 @@
             </ion-thumbnail>
             <ion-label>
               {{prod.name}}
-              <p><b>Stock:</b>{{prod.price}}</p>
+              <p><b>Stock:</b>{{prod.stock}}</p>
               <p><b>Precio:</b> {{prod.price | currency}}</p>
             </ion-label>
             <ion-button fill="clear" (click)="openEditProduct(prod)">

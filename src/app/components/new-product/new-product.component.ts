@@ -7,6 +7,7 @@ import { ProductService } from '../../service/product.service';
 import { CategoryServiceService } from 'src/app/service/category-service.service';
 import { priceValid } from 'src/app/validators/price.validator';
 import { dateValid } from 'src/app/validators/date.validator';
+import { stockValidate } from 'src/app/validators/stock.validator';
 
 @Component({
   selector: 'app-new-product',
@@ -60,7 +61,7 @@ export class NewProductComponent  implements OnInit {
         Validators.minLength(10)]],
     price: [0, Validators.required],
     price_sale: [0, Validators.required],
-    stock: ['', Validators.required],
+    stock: [0, Validators.required,],
     expired: [null],
     image: ['',],
     code: ['0', ],
@@ -68,7 +69,7 @@ export class NewProductComponent  implements OnInit {
     category_id: ['', Validators.required],
     // _method: ['PUT'],
     },
-    {validators: [priceValid, dateValid]})
+    {validators: [priceValid, dateValid, stockValidate]})
     this.getCategories();
 
     if(info){
@@ -249,8 +250,14 @@ generarURL(image: any){
     return !!this.formProduct?.errors?.['expiredError']
   }
 
+  validarStock(){
+    return !!this.formProduct.errors?.['stockError'];
+  }
+
   addCaducidad(){
     this.caduca = !this.caduca;
   }
+
+
 
 }
