@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ProductService } from '../service/product.service';
-import { SalesService } from '../service/sales.service';
 
 @Component({
   selector: 'app-tab3',
@@ -12,8 +11,7 @@ export class Tab3Page {
   ventas : any;
 
   constructor(
-    private saleS : ProductService,
-    private _pdfMake: SalesService
+    private saleS : ProductService
   ) {
     this.saleS.getSale().subscribe(sale =>{
       this.ventas = sale;
@@ -24,10 +22,6 @@ export class Tab3Page {
   onSearchChange(event: any){
     console.log('HOLA');
 
-  }
-
-  btnMakePdf(){
-    this._pdfMake.generatePDF(this.ventas);
   }
 
   deleteSale(id:any){

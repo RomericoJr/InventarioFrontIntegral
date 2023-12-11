@@ -43,13 +43,12 @@ export class Tab2Page {
 
   }
   categorias:any = [];
-  productos:any[] = [];
+  productos:any = [];
 
-  filtrado:any[]= []
   getCategory(){
     this.categoryService.getCategory().subscribe(
       res=>{
-        // console.log(res);
+        console.log(res);
 
         this.categorias = res;
         this.categorias = this.categorias.slice(0, 5);
@@ -62,13 +61,11 @@ export class Tab2Page {
 
   getProduct(){
     this.productService.getProduct().subscribe(
-      (res:any)=>{
+      res=>{
         // console.log(res);
         this.productos = res;
-        this.filtrado =res;
         this.productos.reverse();
-
-        // console.log('mis productos',this.productos);
+        console.log('mis productos',this.productos);
         // this.productos = this.productos.slice(0, 5);
       },
       err=>{
@@ -178,17 +175,6 @@ export class Tab2Page {
     this.categoryService.deleteCategory(id).subscribe(data => {
       console.log(data);
     })
-  }
-
-  filterProductsByCategory(products: any[], categoryId: number): any[] {
-    return products.filter(product => product.category_id === categoryId);
-  }
-
-  SearchCategory(id: number) {
-    // console.log(id);
-    let filteredProducts = this.filterProductsByCategory(this.productos, id);
-    console.log(filteredProducts);
-    this.filtrado = filteredProducts;
   }
 
 }

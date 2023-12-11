@@ -39,7 +39,7 @@
         </ion-text>
       </ion-col>
       <ion-col size="6" size-md="4" *ngFor="let cat of categorias">
-        <ion-button (click)="SearchCategory(cat.id)" [color]=cat.color class="ion-text-lowercase" expand="block" shape="round">
+        <ion-button (click)="deleteCategory(cat.id)" [color]=cat.color class="ion-text-lowercase" expand="block" shape="round">
           <p>
             {{cat.length > 12 ? cat.substr(0, 10) + '...' : cat.name }}
           </p>
@@ -71,7 +71,7 @@
 
           <ion-grid>
             <ion-row>
-              <ion-col size="12" size-md="4" size-sm="6" *ngFor="let prod of filtrado">
+              <ion-col size="12" size-md="4" size-sm="6" *ngFor="let prod of productos">
 
           <ion-item lines="full" >
             <ion-thumbnail (click)="openViewProduct()" slot="start">
